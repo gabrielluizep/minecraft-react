@@ -2,6 +2,7 @@ import { Physics } from '@react-three/cannon'
 import { Sky } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
 import { Ground, Player } from './components'
+import { Cubes } from './components/Cubes'
 import { FPV } from './components/FPV'
 
 function App() {
@@ -15,6 +16,7 @@ function App() {
         <Physics>
           <Ground />
           <Player />
+          <Cubes />
         </Physics>
       </Canvas>
       <div className="cursor absolute centered">+</div>
