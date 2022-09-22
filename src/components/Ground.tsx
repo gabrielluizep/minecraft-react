@@ -6,6 +6,8 @@ type Props = {}
 export const Ground = (props: Props) => {
   const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], position: [0, 0, 0] }))
 
+  groundTexture.repeat.set(100, 100)
+
   return (
     <mesh ref={ref} receiveShadow>
       <planeBufferGeometry attach="geometry" args={[100, 100]} />
