@@ -5,7 +5,7 @@ import { groundTexture } from '../assets'
 type Props = {}
 
 export const Ground = (props: Props) => {
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 4, 0, 0], position: [0, 0, 0] }))
+  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], position: [0, 0, 0] }))
 
   groundTexture.magFilter = NearestFilter
   groundTexture.wrapS = RepeatWrapping
