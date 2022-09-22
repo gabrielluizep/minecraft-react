@@ -1,4 +1,6 @@
 import { useBox } from '@react-three/cannon'
+import { Ref } from 'react'
+import { BufferGeometry, Mesh } from 'three'
 import * as textures from '../assets/textures'
 
 type Props = {
@@ -15,7 +17,7 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
   const activeTexture = textures[texture + 'Texture']
 
   return (
-    <mesh ref={ref}>
+    <mesh ref={ref as Ref<Mesh<BufferGeometry>>}>
       <boxBufferGeometry attach="geometry" />
       <meshStandardMaterial attach="material" map={activeTexture} />
     </mesh>

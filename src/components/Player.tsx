@@ -1,7 +1,7 @@
 import { useSphere } from '@react-three/cannon'
 import { useFrame, useThree } from '@react-three/fiber'
-import { useEffect, useRef } from 'react'
-import { Vector3 } from 'three'
+import { Ref, useEffect, useRef } from 'react'
+import { BufferGeometry, Mesh, Vector3 } from 'three'
 import { useKeyboard } from '../hooks/useKeyboard'
 
 const JUMP_FORCE = 3
@@ -45,5 +45,5 @@ export const Player = (props: Props) => {
     }
   })
 
-  return <mesh ref={ref}></mesh>
+  return <mesh ref={ref as Ref<Mesh<BufferGeometry>>}></mesh>
 }
