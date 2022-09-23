@@ -12,7 +12,7 @@ type GameState = {
   cubes: Cube[]
   addCube: (x: number, y: number, z: number) => void
   removeCube: (x: number, y: number, z: number) => void
-  setTexture: () => void
+  setTexture: (texture: string) => void
   saveWorld: () => void
   resetWorld: () => void
 }
@@ -25,7 +25,7 @@ export const useStore = create<GameState>((set) => ({
   },
   removeCube: (x, y, z) =>
     set((prev) => ({ cubes: prev.cubes.filter((cube) => cube.pos.join('') !== [x, y, z].join('')) })),
-  setTexture: () => null,
+  setTexture: (texture) => set({ texture }),
   saveWorld: () => null,
   resetWorld: () => null,
 }))
