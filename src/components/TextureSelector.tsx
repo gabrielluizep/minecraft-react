@@ -46,9 +46,16 @@ export const TextureSelector = () => {
 
   if (visible) {
     return (
-      <div className="absolute centered texture-selector">
+      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex">
         {Object.entries(images).map(([k, src]) => {
-          return <img key={k} src={src} alt={k} className={`${k === activeTexture ? 'active' : ''}`} />
+          return (
+            <img
+              key={k}
+              src={src}
+              alt={k}
+              className={`${k === activeTexture ? 'border-2 border-red-500 scale-150' : ''}`}
+            />
+          )
         })}
       </div>
     )

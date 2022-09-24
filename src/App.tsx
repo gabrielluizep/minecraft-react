@@ -6,7 +6,7 @@ import { Ground, Player, Cubes, FPV, Menu, TextureSelector } from './components'
 
 function App() {
   return (
-    <>
+    <div className="w-[800px] h-[600px] relative">
       <Canvas>
         <Sky sunPosition={[100, 100, 20]} />
 
@@ -18,10 +18,10 @@ function App() {
           <Cubes />
         </Physics>
       </Canvas>
-      <div className="cursor absolute centered">+</div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-0 -translte-y-1/2 text-white">+</div>
       <TextureSelector />
       <Menu />
-    </>
+    </div>
   )
 }
 
