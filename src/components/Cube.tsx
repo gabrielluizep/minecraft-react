@@ -1,12 +1,20 @@
 import { useBox } from '@react-three/cannon'
 import { Ref, useState } from 'react'
 import { BufferGeometry, Mesh } from 'three'
-import * as textures from '../assets/textures'
+import { dirtTexture, grassTexture, glassTexture, woodTexture, logTexture } from '../assets/textures'
 import { useStore } from '../hooks'
+
+const textures = {
+  dirt: dirtTexture,
+  grass: grassTexture,
+  glass: glassTexture,
+  wood: woodTexture,
+  log: logTexture,
+}
 
 type Props = {
   position: [number, number, number]
-  texture: String
+  texture: keyof typeof textures
 }
 
 export const Cube: React.FC<Props> = ({ position, texture }) => {
@@ -18,7 +26,7 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
   }))
   const [addCube, removeCube] = useStore((state) => [state.addCube, state.removeCube])
 
-  const activeTexture = textures[texture + 'Texture']
+  const activeTexture = textures[texture]
 
   return (
     <mesh
@@ -37,7 +45,9 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
 
         const { x, y, z } = ref.current!.position
 
-        if (e.altKey) return removeCube(x, y, z)
+        console.log(e.nativeEvent.button)
+
+        if (e.nativeEvent.button === 0) return removeCube(x, y, z)
 
         switch (clickedFace) {
           case 0:

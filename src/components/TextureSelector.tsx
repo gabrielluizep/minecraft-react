@@ -25,7 +25,7 @@ export const TextureSelector = () => {
       log,
     }
 
-    const pressedTexture = Object.entries(textures).find(([k, v]) => v)
+    const pressedTexture = Object.entries(textures).find(([k, v]) => v) as [texture, boolean] | undefined
 
     if (pressedTexture) {
       setTexture(pressedTexture[0])

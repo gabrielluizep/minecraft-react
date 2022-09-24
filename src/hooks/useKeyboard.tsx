@@ -12,7 +12,19 @@ type actionKey =
   | 'wood'
   | 'log'
 
-const actionsByKey: () => actionKey = (key: KeyboardEvent['code']) => {
+type possibleKeys =
+  | 'KeyW'
+  | 'KeyS'
+  | 'KeyA'
+  | 'KeyD'
+  | 'Space'
+  | 'Digit1'
+  | 'Digit2'
+  | 'Digit3'
+  | 'Digit4'
+  | 'Digit5'
+
+const actionsByKey = (key: possibleKeys): string | undefined => {
   const keyActionMap = {
     KeyW: 'moveForward',
     KeyS: 'moveBackward',
@@ -28,9 +40,7 @@ const actionsByKey: () => actionKey = (key: KeyboardEvent['code']) => {
 
   const action = keyActionMap[key]
 
-  if (!action) {
-    throw new Error(`Unknown action to key: ${key}`)
-  }
+  if (!action) return
 
   return action
 }
@@ -41,11 +51,11 @@ type actions = {
   moveLeft: boolean
   moveRight: boolean
   jump: boolean
-  texture1: boolean
-  texture2: boolean
-  texture3: boolean
-  texture4: boolean
-  texture5: boolean
+  dirt: boolean
+  grass: boolean
+  glass: boolean
+  wood: boolean
+  log: boolean
 }
 
 export const useKeyboard = () => {
@@ -55,15 +65,15 @@ export const useKeyboard = () => {
     moveLeft: false,
     moveRight: false,
     jump: false,
-    texture1: false,
-    texture2: false,
-    texture3: false,
-    texture4: false,
-    texture5: false,
+    dirt: false,
+    grass: false,
+    glass: false,
+    wood: false,
+    log: false,
   })
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    const action = actionsByKey(e.code)
+    const action = actionsByKey(e.code as possibleKeys)
 
     if (action) {
       setActions((prev) => ({ ...prev, [action]: true }))
@@ -71,7 +81,7 @@ export const useKeyboard = () => {
   }, [])
 
   const handleKeyUp = useCallback((e: KeyboardEvent) => {
-    const action = actionsByKey(e.code)
+    const action = actionsByKey(e.code as possibleKeys)
 
     if (action) {
       setActions((prev) => ({ ...prev, [action]: false }))

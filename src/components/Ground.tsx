@@ -19,7 +19,7 @@ export const Ground = (props: Props) => {
 
         const [x, y, z] = Object.values(e.point).map((n) => Math.trunc(n))
 
-        addCube(x, y, z)
+        if (e.nativeEvent.button === 2) addCube(x, y, z)
       }}
       ref={ref as Ref<Mesh<BufferGeometry>>}
       receiveShadow
