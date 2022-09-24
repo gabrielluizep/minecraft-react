@@ -45,8 +45,6 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
 
         const { x, y, z } = ref.current!.position
 
-        console.log(e.nativeEvent.button)
-
         if (e.nativeEvent.button === 0) return removeCube(x, y, z)
 
         switch (clickedFace) {
@@ -71,7 +69,7 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
       }}
       ref={ref as Ref<Mesh<BufferGeometry>>}
     >
-      <boxBufferGeometry attach="geometry" />
+      <boxGeometry attach="geometry" />
       <meshStandardMaterial
         color={isHovered ? 'grey' : 'white'}
         transparent

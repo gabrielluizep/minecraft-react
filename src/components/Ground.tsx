@@ -24,7 +24,7 @@ export const Ground = (props: Props) => {
       ref={ref as Ref<Mesh<BufferGeometry>>}
       receiveShadow
     >
-      <planeBufferGeometry attach="geometry" args={[100, 100]} />
+      <planeGeometry attach="geometry" args={[100, 100]} />
       <meshStandardMaterial attach="material" map={groundTexture} />
     </mesh>
   )
