@@ -1,5 +1,6 @@
+import { Cube } from './'
+
 import { useStore } from '../hooks'
-import { Cube } from './Cube'
 
 export const Cubes = () => {
   const [cubes] = useStore((state) => [state.cubes])

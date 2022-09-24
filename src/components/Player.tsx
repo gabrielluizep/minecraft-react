@@ -1,8 +1,10 @@
+import { Ref, useEffect, useRef } from 'react'
+
 import { useSphere } from '@react-three/cannon'
 import { useFrame, useThree } from '@react-three/fiber'
-import { Ref, useEffect, useRef } from 'react'
 import { BufferGeometry, Mesh, Vector3 } from 'three'
-import { useKeyboard } from '../hooks/useKeyboard'
+
+import { useKeyboard } from '../hooks'
 
 const JUMP_FORCE = 3
 const SPEED = 4

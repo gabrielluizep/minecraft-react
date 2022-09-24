@@ -1,11 +1,8 @@
 import { Physics } from '@react-three/cannon'
 import { Sky } from '@react-three/drei'
 import { Canvas } from '@react-three/fiber'
-import { Ground, Player } from './components'
-import { Cubes } from './components/Cubes'
-import { FPV } from './components/FPV'
-import { Menu } from './components/Menu'
-import { TextureSelector } from './components/TextureSelector'
+
+import { Ground, Player, Cubes, FPV, Menu, TextureSelector } from './components'
 
 function App() {
   return (

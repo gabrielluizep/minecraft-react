@@ -1,17 +1,5 @@
 import { useCallback, useEffect, useState } from 'react'
 
-type actionKey =
-  | 'moveForward'
-  | 'moveBackward'
-  | 'moveLeft'
-  | 'moveRight'
-  | 'jump'
-  | 'dirt'
-  | 'grass'
-  | 'glass'
-  | 'wood'
-  | 'log'
-
 type possibleKeys =
   | 'KeyW'
   | 'KeyS'

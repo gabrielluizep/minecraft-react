@@ -1,8 +1,10 @@
-import { usePlane } from '@react-three/cannon'
 import { Ref } from 'react'
+
+import { usePlane } from '@react-three/cannon'
 import { BufferGeometry, Mesh } from 'three'
-import { groundTexture } from '../assets'
+
 import { useStore } from '../hooks'
+import { groundTexture } from '../assets'
 
 type Props = {}
 

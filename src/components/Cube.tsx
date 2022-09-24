@@ -1,8 +1,11 @@
-import { useBox } from '@react-three/cannon'
 import { Ref, useState } from 'react'
+
+import { useBox } from '@react-three/cannon'
 import { BufferGeometry, Mesh } from 'three'
-import { dirtTexture, grassTexture, glassTexture, woodTexture, logTexture } from '../assets/textures'
+
 import { useStore } from '../hooks'
+
+import { dirtTexture, grassTexture, glassTexture, woodTexture, logTexture } from '../assets'
 
 const textures = {
   dirt: dirtTexture,

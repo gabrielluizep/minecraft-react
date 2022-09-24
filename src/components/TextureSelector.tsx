@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react'
-import { useKeyboard, useStore } from '../hooks'
 
+import { useKeyboard, useStore } from '../hooks'
 import { dirtImg, grassImg, glassImg, woodImg, logImg } from '../assets'
 
 const images = {
