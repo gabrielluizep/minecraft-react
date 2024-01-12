@@ -1,5 +1,6 @@
 {
   "name": "minecraft-react",
+  "homepage": "https://minecraft.gabrielluizep.dev",
   "private": true,
   "version": "0.0.0",
   "type": "module",
