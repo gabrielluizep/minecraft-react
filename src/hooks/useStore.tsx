@@ -2,11 +2,15 @@ import { create } from 'zustand';
 
 import { nanoid } from 'nanoid';
 
+import { Cube, texture } from '../types';
+
 const getLocalStorage = (key: string) => {
   const value = window.localStorage.getItem(key);
 
   if (value) return JSON.parse(value);
 };
+
+// biome-ignore lint/suspicious/noExplicitAny: <explanation>
 const setLocalStorage = (key: string, value: any) =>
   window.localStorage.setItem(key, JSON.stringify(value));
 

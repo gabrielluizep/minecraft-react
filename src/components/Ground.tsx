@@ -6,9 +6,7 @@ import { BufferGeometry, Mesh } from 'three';
 import { groundTexture } from '../assets';
 import { useStore } from '../hooks';
 
-type Props = {};
-
-export const Ground = (props: Props) => {
+export const Ground = () => {
   const [ref] = usePlane(() => ({
     rotation: [-Math.PI / 2, 0, 0],
     position: [0, -0.5, 0],
@@ -18,6 +16,7 @@ export const Ground = (props: Props) => {
   groundTexture.repeat.set(100, 100);
 
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <mesh
       onClick={e => {
         e.stopPropagation();

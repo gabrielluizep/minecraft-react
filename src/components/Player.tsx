@@ -9,9 +9,7 @@ import { useKeyboard } from '../hooks';
 const JUMP_FORCE = 3;
 const SPEED = 4;
 
-type Props = {};
-
-export const Player = (props: Props) => {
+export const Player = () => {
   const { jump, moveForward, moveBackward, moveLeft, moveRight } =
     useKeyboard();
 
@@ -24,11 +22,13 @@ export const Player = (props: Props) => {
 
   const vel = useRef([0, 0, 0]);
   useEffect(() => {
+    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
     api.velocity.subscribe(v => (vel.current = v));
   }, [api.velocity]);
 
   const pos = useRef([0, 0, 0]);
   useEffect(() => {
+    // biome-ignore lint/suspicious/noAssignInExpressions: <explanation>
     api.position.subscribe(p => (pos.current = p));
   }, [api.position]);
 
@@ -62,5 +62,5 @@ export const Player = (props: Props) => {
     }
   });
 
-  return <mesh ref={ref as Ref<Mesh<BufferGeometry>>}></mesh>;
+  return <mesh ref={ref as Ref<Mesh<BufferGeometry>>} />;
 };

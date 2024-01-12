@@ -1,4 +1,4 @@
-import { Ref, useState } from 'react';
+import React, { Ref, useState } from 'react';
 
 import { useBox } from '@react-three/cannon';
 import { BufferGeometry, Mesh } from 'three';
@@ -41,6 +41,7 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
   const activeTexture = textures[texture];
 
   return (
+    // biome-ignore lint/a11y/useKeyWithClickEvents: <explanation>
     <mesh
       onPointerMove={e => {
         e.stopPropagation();
@@ -53,9 +54,12 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
       onClick={e => {
         e.stopPropagation();
 
+        // biome-ignore lint/style/noNonNullAssertion: <explanation>
         const clickedFace = Math.floor(e.faceIndex! / 2);
 
-        const { x, y, z } = ref.current!.position;
+        if (!ref.current) return;
+
+        const { x, y, z } = ref.current.position;
 
         if (e.nativeEvent.button === 0) return removeCube(x, y, z);
 

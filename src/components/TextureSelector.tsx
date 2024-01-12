@@ -1,7 +1,9 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 
 import { dirtImg, glassImg, grassImg, logImg, woodImg } from '../assets';
 import { useKeyboard, useStore } from '../hooks';
+
+import type { texture } from '../types';
 
 const images = {
   dirt: dirtImg,
@@ -12,7 +14,6 @@ const images = {
 };
 
 export const TextureSelector = () => {
-  const [visible, setVisible] = useState(false);
   const [activeTexture, setTexture] = useStore(state => [
     state.texture,
     state.setTexture,
@@ -28,7 +29,7 @@ export const TextureSelector = () => {
       log,
     };
 
-    const pressedTexture = Object.entries(textures).find(([k, v]) => v) as
+    const pressedTexture = Object.entries(textures).find(([_, v]) => v) as
       | [texture, boolean]
       | undefined;
 
@@ -37,36 +38,20 @@ export const TextureSelector = () => {
     }
   }, [setTexture, dirt, grass, glass, wood, log]);
 
-  useEffect(() => {
-    const visibilityTimeout = setTimeout(() => {
-      setVisible(false);
-    }, 2000);
-
-    setVisible(true);
-
-    return () => {
-      clearTimeout(visibilityTimeout);
-    };
-  }, [activeTexture]);
-
-  if (visible) {
-    return (
-      <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex">
-        {Object.entries(images).map(([k, src]) => {
-          return (
-            <img
-              key={k}
-              src={src}
-              alt={k}
-              className={`${
-                k === activeTexture ? 'border-2 border-red-500 scale-150' : ''
-              }`}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-
-  return null;
+  return (
+    <div className="absolute bottom-3 left-1/2 -translate-x-1/2 flex">
+      {Object.entries(images).map(([k, src]) => {
+        return (
+          <img
+            key={k}
+            src={src}
+            alt={k}
+            className={`${
+              k === activeTexture ? 'border-2 border-red-500 scale-150' : ''
+            }`}
+          />
+        );
+      })}
+    </div>
+  );
 };
