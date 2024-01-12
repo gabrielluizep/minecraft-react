@@ -1,7 +1,10 @@
-import { useStore } from '../hooks'
+import { useStore } from '../hooks';
 
 export const Menu = () => {
-  const [saveWorld, resetWorld] = useStore((state) => [state.saveWorld, state.resetWorld])
+  const [saveWorld, resetWorld] = useStore(state => [
+    state.saveWorld,
+    state.resetWorld,
+  ]);
 
   return (
     <div className="absolute top-3 left-3 space-x-3">
@@ -18,5 +21,5 @@ export const Menu = () => {
         Reset
       </button>
     </div>
-  )
-}
+  );
+};

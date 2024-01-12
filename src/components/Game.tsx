@@ -1,8 +1,8 @@
-import { Physics } from '@react-three/cannon'
-import { Sky } from '@react-three/drei'
-import { Canvas } from '@react-three/fiber'
+import { Physics } from '@react-three/cannon';
+import { Sky } from '@react-three/drei';
+import { Canvas } from '@react-three/fiber';
 
-import { Ground, Player, Cubes, FPV, Menu, TextureSelector } from './'
+import { Cubes, FPV, Ground, Menu, Player, TextureSelector } from './';
 
 export const Game = () => {
   return (
@@ -17,9 +17,11 @@ export const Game = () => {
           <Cubes />
         </Physics>
       </Canvas>
-      <div className="absolute top-1/2 left-1/2 -translate-x-0 -translte-y-1/2 text-white">+</div>
+      <div className="absolute top-1/2 left-1/2 -translate-x-0 -translte-y-1/2 text-white">
+        +
+      </div>
       <TextureSelector />
       <Menu />
     </div>
-  )
-}
+  );
+};

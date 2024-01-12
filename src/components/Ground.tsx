@@ -1,27 +1,30 @@
-import { Ref } from 'react'
+import { Ref } from 'react';
 
-import { usePlane } from '@react-three/cannon'
-import { BufferGeometry, Mesh } from 'three'
+import { usePlane } from '@react-three/cannon';
+import { BufferGeometry, Mesh } from 'three';
 
-import { useStore } from '../hooks'
-import { groundTexture } from '../assets'
+import { groundTexture } from '../assets';
+import { useStore } from '../hooks';
 
-type Props = {}
+type Props = {};
 
 export const Ground = (props: Props) => {
-  const [ref] = usePlane(() => ({ rotation: [-Math.PI / 2, 0, 0], position: [0, -0.5, 0] }))
-  const [addCube] = useStore((state) => [state.addCube])
+  const [ref] = usePlane(() => ({
+    rotation: [-Math.PI / 2, 0, 0],
+    position: [0, -0.5, 0],
+  }));
+  const [addCube] = useStore(state => [state.addCube]);
 
-  groundTexture.repeat.set(100, 100)
+  groundTexture.repeat.set(100, 100);
 
   return (
     <mesh
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={e => {
+        e.stopPropagation();
 
-        const [x, y, z] = Object.values(e.point).map((n) => Math.trunc(n))
+        const [x, y, z] = Object.values(e.point).map(n => Math.trunc(n));
 
-        if (e.nativeEvent.button === 2) addCube(x, y, z)
+        if (e.nativeEvent.button === 2) addCube(x, y, z);
       }}
       ref={ref as Ref<Mesh<BufferGeometry>>}
       receiveShadow
@@ -29,5 +32,5 @@ export const Ground = (props: Props) => {
       <planeGeometry attach="geometry" args={[100, 100]} />
       <meshStandardMaterial attach="material" map={groundTexture} />
     </mesh>
-  )
-}
+  );
+};

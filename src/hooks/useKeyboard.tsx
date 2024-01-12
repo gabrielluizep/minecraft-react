@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react';
 
 type possibleKeys =
   | 'KeyW'
@@ -10,7 +10,7 @@ type possibleKeys =
   | 'Digit2'
   | 'Digit3'
   | 'Digit4'
-  | 'Digit5'
+  | 'Digit5';
 
 const actionsByKey = (key: possibleKeys): string | undefined => {
   const keyActionMap = {
@@ -24,27 +24,27 @@ const actionsByKey = (key: possibleKeys): string | undefined => {
     Digit3: 'glass',
     Digit4: 'wood',
     Digit5: 'log',
-  }
+  };
 
-  const action = keyActionMap[key]
+  const action = keyActionMap[key];
 
-  if (!action) return
+  if (!action) return;
 
-  return action
-}
+  return action;
+};
 
 type actions = {
-  moveForward: boolean
-  moveBackward: boolean
-  moveLeft: boolean
-  moveRight: boolean
-  jump: boolean
-  dirt: boolean
-  grass: boolean
-  glass: boolean
-  wood: boolean
-  log: boolean
-}
+  moveForward: boolean;
+  moveBackward: boolean;
+  moveLeft: boolean;
+  moveRight: boolean;
+  jump: boolean;
+  dirt: boolean;
+  grass: boolean;
+  glass: boolean;
+  wood: boolean;
+  log: boolean;
+};
 
 export const useKeyboard = () => {
   const [actions, setActions] = useState<actions>({
@@ -58,33 +58,33 @@ export const useKeyboard = () => {
     glass: false,
     wood: false,
     log: false,
-  })
+  });
 
   const handleKeyDown = useCallback((e: KeyboardEvent) => {
-    const action = actionsByKey(e.code as possibleKeys)
+    const action = actionsByKey(e.code as possibleKeys);
 
     if (action) {
-      setActions((prev) => ({ ...prev, [action]: true }))
+      setActions(prev => ({ ...prev, [action]: true }));
     }
-  }, [])
+  }, []);
 
   const handleKeyUp = useCallback((e: KeyboardEvent) => {
-    const action = actionsByKey(e.code as possibleKeys)
+    const action = actionsByKey(e.code as possibleKeys);
 
     if (action) {
-      setActions((prev) => ({ ...prev, [action]: false }))
+      setActions(prev => ({ ...prev, [action]: false }));
     }
-  }, [])
+  }, []);
 
   useEffect(() => {
-    window.addEventListener('keydown', handleKeyDown)
-    window.addEventListener('keyup', handleKeyUp)
+    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener('keyup', handleKeyUp);
 
     return () => {
-      window.removeEventListener('keydown', handleKeyDown)
-      window.removeEventListener('keyup', handleKeyUp)
-    }
-  }, [handleKeyDown, handleKeyUp])
+      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener('keyup', handleKeyUp);
+    };
+  }, [handleKeyDown, handleKeyUp]);
 
-  return actions
-}
+  return actions;
+};

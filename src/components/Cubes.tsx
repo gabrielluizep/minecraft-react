@@ -1,9 +1,9 @@
-import { Cube } from './'
+import { Cube } from './';
 
-import { useStore } from '../hooks'
+import { useStore } from '../hooks';
 
 export const Cubes = () => {
-  const [cubes] = useStore((state) => [state.cubes])
+  const [cubes] = useStore(state => [state.cubes]);
 
   return (
     <>
@@ -11,5 +11,5 @@ export const Cubes = () => {
         <Cube key={key} position={pos} texture={texture} />
       ))}
     </>
-  )
-}
+  );
+};

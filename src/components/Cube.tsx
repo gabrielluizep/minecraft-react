@@ -1,11 +1,17 @@
-import { Ref, useState } from 'react'
+import { Ref, useState } from 'react';
 
-import { useBox } from '@react-three/cannon'
-import { BufferGeometry, Mesh } from 'three'
+import { useBox } from '@react-three/cannon';
+import { BufferGeometry, Mesh } from 'three';
 
-import { useStore } from '../hooks'
+import { useStore } from '../hooks';
 
-import { dirtTexture, grassTexture, glassTexture, woodTexture, logTexture } from '../assets'
+import {
+  dirtTexture,
+  glassTexture,
+  grassTexture,
+  logTexture,
+  woodTexture,
+} from '../assets';
 
 const textures = {
   dirt: dirtTexture,
@@ -13,61 +19,64 @@ const textures = {
   glass: glassTexture,
   wood: woodTexture,
   log: logTexture,
-}
+};
 
 type Props = {
-  position: [number, number, number]
-  texture: keyof typeof textures
-}
+  position: [number, number, number];
+  texture: keyof typeof textures;
+};
 
 export const Cube: React.FC<Props> = ({ position, texture }) => {
-  const [isHovered, setIsHovered] = useState(false)
+  const [isHovered, setIsHovered] = useState(false);
 
   const [ref] = useBox(() => ({
     type: 'Static',
     position,
-  }))
-  const [addCube, removeCube] = useStore((state) => [state.addCube, state.removeCube])
+  }));
+  const [addCube, removeCube] = useStore(state => [
+    state.addCube,
+    state.removeCube,
+  ]);
 
-  const activeTexture = textures[texture]
+  const activeTexture = textures[texture];
 
   return (
     <mesh
-      onPointerMove={(e) => {
-        e.stopPropagation()
-        setIsHovered(true)
+      onPointerMove={e => {
+        e.stopPropagation();
+        setIsHovered(true);
       }}
-      onPointerOut={(e) => {
-        e.stopPropagation()
-        setIsHovered(false)
+      onPointerOut={e => {
+        e.stopPropagation();
+        setIsHovered(false);
       }}
-      onClick={(e) => {
-        e.stopPropagation()
+      onClick={e => {
+        e.stopPropagation();
 
-        const clickedFace = Math.floor(e.faceIndex! / 2)
+        const clickedFace = Math.floor(e.faceIndex! / 2);
 
-        const { x, y, z } = ref.current!.position
+        const { x, y, z } = ref.current!.position;
 
-        if (e.nativeEvent.button === 0) return removeCube(x, y, z)
+        if (e.nativeEvent.button === 0) return removeCube(x, y, z);
 
         switch (clickedFace) {
           case 0:
-            return addCube(x + 1, y, z)
+            return addCube(x + 1, y, z);
 
           case 1:
-            return addCube(x - 1, y, z)
+            return addCube(x - 1, y, z);
 
           case 2:
-            return addCube(x, y + 1, z)
+            return addCube(x, y + 1, z);
 
           case 3:
-            return addCube(x, y - 1, z)
+            return addCube(x, y - 1, z);
 
           case 4:
-            return addCube(x, y, z + 1)
+            return addCube(x, y, z + 1);
 
           case 5:
-            return addCube(x, y, z - 1)
+            return addCube(x, y, z - 1);
         }
       }}
       ref={ref as Ref<Mesh<BufferGeometry>>}
@@ -81,5 +90,5 @@ export const Cube: React.FC<Props> = ({ position, texture }) => {
         map={activeTexture}
       />
     </mesh>
-  )
-}
+  );
+};

@@ -1,7 +1,7 @@
-type texture = 'dirt' | 'grass' | 'glass' | 'wood' | 'log'
+type texture = 'dirt' | 'grass' | 'glass' | 'wood' | 'log';
 
 type Cube = {
-  key: string
-  pos: [number, number, number]
-  texture: texture
-}
+  key: string;
+  pos: [number, number, number];
+  texture: texture;
+};
