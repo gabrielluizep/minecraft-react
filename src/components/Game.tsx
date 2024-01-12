@@ -1,12 +1,14 @@
 import { Physics } from '@react-three/cannon';
 import { Sky } from '@react-three/drei';
 import { Canvas } from '@react-three/fiber';
+import { type ClassValue } from 'clsx';
 
+import { cn } from '../lib/utils';
 import { Cubes, FPV, Ground, Menu, Player, TextureSelector } from './';
 
-export const Game = () => {
+export const Game = ({ className }: { className?: ClassValue }) => {
   return (
-    <div className="w-[800px] h-[600px] relative">
+    <div className={cn('relative', className)}>
       <Canvas>
         <Sky sunPosition={[100, 100, 20]} />
         <ambientLight intensity={0.5} />
